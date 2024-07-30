@@ -21,8 +21,7 @@ I made this script a library because I wrote multiple scripts which do unfencing
 * Google `https://www.google.com/url?url=`
 * Proofpoint URL Defense
    * v1 `https://urldefense.proofpoint.com/v1/?url=`
-   * v2 `https://urldefense.proofpoint.com/v2/?url=`
-   * v3 `https://urldefense.proofpoint.com/v3/?url=`
+   * v2 `https://urldefense.proofpoint.com/v2/?u=`
 * Microsoft Outlook protection links `https://nam10.safelinks.protection.outlook.com/?url=`
 
 # Usage

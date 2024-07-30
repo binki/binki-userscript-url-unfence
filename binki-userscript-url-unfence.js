@@ -16,8 +16,11 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
       }
     }],
     ['urldefense.proofpoint.com', url => {
-      if (url.startsWith('https://urldefense.proofpoint.com/v1/') || url.startsWith('https://urldefense.proofpoint.com/v2/') || url.startsWith('https://urldefense.proofpoint.com/v3/')) {
+      if (url.startsWith('https://urldefense.proofpoint.com/v1/')) {
         return new URL(url).searchParams.get('url');
+      }
+      if (url.startsWith('https://urldefense.proofpoint.com/v2/')) {
+        return new URL(url).searchParams.get('u');
       }
     }],
   ]);
