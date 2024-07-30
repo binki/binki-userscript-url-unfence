@@ -19,9 +19,6 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
       if (url.startsWith('https://urldefense.proofpoint.com/v1/')) {
         return new URL(url).searchParams.get('url');
       }
-      if (url.startsWith('https://urldefense.proofpoint.com/v2/')) {
-        return new URL(url).searchParams.get('u');
-      }
     }],
   ]);
   return async url => {
