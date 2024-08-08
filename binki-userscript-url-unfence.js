@@ -19,6 +19,14 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
       if (url.startsWith('https://urldefense.proofpoint.com/v1/')) {
         return new URL(url).searchParams.get('url');
       }
+      if (url.startsWith('https://urldefense.proofpoint.com/v2/')) {
+        const u = new URL(url).searchParams.get('u');
+        // See NOTES.md. _ means forward-slash, -XX means hexadecimal escape of character including dash or underscore.
+        return u.replace(/-..|_/gv, match => {
+          if (match === '_') return '/';
+          return decodeURIComponent(match.replace('-', '%'));
+        });
+      }
     }],
   ]);
   return async url => {
