@@ -28,6 +28,12 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
         });
       }
     }],
+    ['urldefense.com', url => {
+      if (url.startsWith('https://urldefense.com/v3/')) {
+        // Skip the prefix and trim the trailer looking for the marker. See NOTES.md.
+        return url.substring(28).replace(/__;!![^!]+![^!]+\$$/gv, '');
+      }
+    }],
   ]);
   return async url => {
     if (typeof url !== 'string') throw new Error('url must be string');

@@ -9,3 +9,15 @@ An example of a v2 endpoint encoding a v3 endpoint which demonstrates, for examp
 input: `https://urldefense.proofpoint.com/v2/url?u=https-3A__example.org_folder_subfolder_file-2Dwith-2Ddashes&…`
 
 output: `https://example.org/folder/subfolder/file-with-dashes`
+
+## v3
+
+See example from v2:
+
+`https://urldefense.com/v3/__https://pymolwiki.org/index.php/Cartoon_cylindrical_helices__;!!LQC6Cpwp!t0DZuo6iuU97IvdkbbkBWfCY1lTDOSB4i892YtRIoO96P2OS6LISLpFkHLHmaxa6RQJg3Ga-C_shzE_HMp-ulGxGrDXsIg$`
+
+input: `https://urldefense.com/v3/__«url»__;!!«something»!«something»$`
+
+output: «url»
+
+Seems to be no escaping, just literal fencing. I do not know the logic of things to know how to search for the `__;!!` sequence properly. So will just match on the end part and remove that.
