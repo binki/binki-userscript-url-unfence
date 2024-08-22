@@ -10,8 +10,8 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
         return new URL(url).searchParams.get('u');
       }
     }],
-    ['nam10.safelinks.protection.outlook.com', url => {
-      if (url.startsWith('https://nam10.safelinks.protection.outlook.com/')) {
+    ['safelinks.protection.outlook.com', url => {
+      if (/https:\/\/nam[0-9]+.safelinks.protection.outlook.com\//.test(url)) {
         return new URL(url).searchParams.get('url');
       }
     }],
@@ -41,10 +41,16 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
     const hostMatch = /^(?:[a-zA-Z0-9]+:)?\/\/(\[[^]]+]|[^:/]+)/.exec(url);
     // We have a relative URL or something which is malformed. Pass it through. We do not require well-formed until we match a provider.
     if (hostMatch) {
-      const hostInfo = knownServicesByHost.get(hostMatch[1]);
-      if (hostInfo) {
-        const maybeTransformedUrl = await hostInfo(url);
-        if (maybeTransformedUrl !== undefined) return await binkiUserscriptUrlUnfenceAsync(maybeTransformedUrl);
+      const fullHost = hostMatch[1];
+      // Try all domain components. This is forced by nam??.safelinks.protection.outlook.com since the most specific subdomain is a load-balancing/region-specifying identifier.
+      for (let i = 0; i < fullHost.length; i++) {
+        if (i == 0 || fullHost[i - 1] === '.') {
+          const hostInfo = knownServicesByHost.get(fullHost.substring(i));
+          if (hostInfo) {
+            const maybeTransformedUrl = await hostInfo(url);
+            if (maybeTransformedUrl !== undefined) return await binkiUserscriptUrlUnfenceAsync(maybeTransformedUrl);
+          }
+        }
       }
     }
     return url;
