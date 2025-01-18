@@ -18,7 +18,9 @@ Note, that this is **not** meant to clean trackers from URIs. Unfencing a URI ma
 I made this script a library because I wrote multiple scripts which do unfencing. But they only supports one fencing system. I know there are many fencing systems out there, so I wanted to be able to expand my script to support “everything”. Of course, time and exposure are limited resources. I am intentionally starting this out with just a small list with the hope that I can grow it as I encounter use cases which apply to me. Please file any issues for unsupported fencing systems you come across (but note that tracker removal/URI cleaning is **not** the goal)!
 
 * Facebook Messenger `https://l.messenger.com/l.php?u=`
-* Google `https://www.google.com/url?url=`
+* Google
+   * `https://www.google.com/url?url=`
+   * `https://www.google.com/url?q=`
 * Proofpoint URL Defense
    * v1 `https://urldefense.proofpoint.com/v1/?url=`
    * v2 `https://urldefense.proofpoint.com/v2/?u=http-3A__`

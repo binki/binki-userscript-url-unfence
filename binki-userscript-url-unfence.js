@@ -2,7 +2,8 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
   const knownServicesByHost = new Map([
     ['www.google.com', url => {
       if (url.startsWith('https://www.google.com/url')) {
-        return new URL(url).searchParams.get('url');
+        const searchParams = new URL(url).searchParams;
+        return searchParams.has('url') ? searchParams.get('url') : searchParams.get('q');
       }
     }],
     ['l.messenger.com', url => {
