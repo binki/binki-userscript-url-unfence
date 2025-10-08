@@ -12,7 +12,8 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
       }
     }],
     ['safelinks.protection.outlook.com', url => {
-      if (/https:\/\/nam[0-9]+.safelinks.protection.outlook.com\//.test(url)) {
+      // Both nam01 and na01 links out there and apparently other numbers get used too.
+      if (/https:\/\/nam?[0-9]+.safelinks.protection.outlook.com\//.test(url)) {
         return new URL(url).searchParams.get('url');
       }
     }],
