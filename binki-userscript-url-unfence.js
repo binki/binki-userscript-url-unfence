@@ -1,5 +1,10 @@
 const binkiUserscriptUrlUnfenceAsync = (() => {
   const knownServicesByHost = new Map([
+    ['icp.ids.api.iris.microsoft.com', url => {
+      if (url.startsWith('https://icp.ids.api.iris.microsoft.com/api/v2/a/c?')) {
+        return new URL(url).searchParams.get('url');
+      }
+    }],
     ['www.google.com', url => {
       if (url.startsWith('https://www.google.com/url')) {
         const searchParams = new URL(url).searchParams;
