@@ -58,3 +58,10 @@ const binkiUserscriptUrlUnfenceAsync = (() => {
     return url;
   };
 })();
+
+// Support testing.
+if (typeof module !== 'undefined') {
+  module.exports = {
+    binkiUserscriptUrlUnfenceAsync,
+  };
+}
