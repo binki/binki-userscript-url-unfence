@@ -26,6 +26,7 @@ I made this script a library because I wrote multiple scripts which do unfencing
    * v2 `https://urldefense.proofpoint.com/v2/?u=http-3A__`
    * v3 `https://urldefense.com/v3/__«url»__;!!…!…$`
 * Microsoft Outlook protection links `https://nam[0-9][0-9].safelinks.protection.outlook.com/?url=`
+* Microsoft Iris links `https://icp.ids.api.iris.microsoft.com/api/v2/a/c?url=`
 
 # Usage
 
